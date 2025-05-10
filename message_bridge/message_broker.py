@@ -3,7 +3,7 @@ import os
 import redis
 import pika
 import time
-from log_setup import setup_logger
+from .log_setup import setup_logger
 
 
 class MessageBroker(ABC):
