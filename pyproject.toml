@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "message-bridge"
+name = "message_bridge"
 version = "0.1.0"
 description = "A message dispatcher library for handling API and brokers"
 authors = ["Emrah Burak Gürbüz gemrahburak@gmail.com"]
@@ -11,6 +11,8 @@ requests = "^2.25.1"
 pika = "1.3.2"
 redis = "6.0.0"
 
+[tool.poetry.packages]
+include = ["logger", "message_broker", "message_dispatcher", "utils"]
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.3"
