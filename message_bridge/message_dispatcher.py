@@ -2,8 +2,8 @@ import requests
 import json
 
 from abc import ABC, abstractmethod
-from message_broker import  build_message_broker
-from utils import CircuitBreaker
+from .message_broker import  build_message_broker
+from .circuit_breaker import CircuitBreaker
 
 
 
