@@ -14,23 +14,6 @@ redis = "6.0.0"
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.3"
 
-[tool.poetry.packages]
-[[tool.poetry.packages]]
-include = "message_broker"
-from = "message_broker"
-
-[[tool.poetry.packages]]
-include = "message_dispatcher"
-from = "message_dispatcher"
-
-[[tool.poetry.packages]]
-include = "utils"
-from = "utils"
-
-[[tool.poetry.packages]]
-include = "logger"
-from = "logger"
-
 [build-system]
 requires = ["poetry>=1.0"]
 build-backend = "poetry.masonry.api"
