@@ -1,0 +1,13 @@
+[project]
+name = "message_bridge"
+version = "0.1.0"
+description = "Pub/Sub mimarisi için ortak broker ve sender altyapısı"
+authors = [
+    { name="Emrah Burak Gürbüz", email="gemrahburak@gmail.com" }
+]
+dependencies = []
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
