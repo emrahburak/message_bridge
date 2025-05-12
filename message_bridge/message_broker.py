@@ -294,6 +294,7 @@ class RedisBroker(MessageBroker):
 
     def start_consuming(self, queue_name: str, callback):
         while True:
+            self.logger.info(f"Started consuming Redis queues: {queue_name}")
             message = self.consume(queue_name)
             if message:
                 callback(None, None, None, message.encode("utf-8"))
@@ -427,8 +428,13 @@ class RabbitMQBroker:
 
         self.channel.basic_consume(queue=queue_name,
                                    on_message_callback=callback)
-        self.logger.info("Waiting for messages...")
+        self.channel.basic_consume(queue=queue_name,
+                                       on_message_callback=callback,
+                                       auto_ack=isinstance(
+                                           self.ack_strategy, AutoAckStrategy))
+        self.logger.info(f"Waiting for messages...Host:{self.host}, Queue:{queue_name}")
         self.channel.start_consuming()
+
 
     def start_consuming_multiple(self, queue_names: list[str], callback):
         """
@@ -444,7 +450,7 @@ class RabbitMQBroker:
                                            self.ack_strategy, AutoAckStrategy))
             self.logger.info(f"Started consuming queue: {queue}")
 
-        self.logger.info("Waiting for messages from multiple queues...")
+        self.logger.info(f"Waiting for messages from multiple queues...Host:{self.host}")
         try:
             self.channel.start_consuming()
         except KeyboardInterrupt:
