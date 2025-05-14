@@ -111,7 +111,7 @@ class MessageBroker(ABC):
         pass
 
     @abstractmethod
-    def consume_configure(self,
+    def configure(self,
                           queue_name: str,
                           exchange_name: str,
                           routing_key: str = None):
@@ -407,7 +407,7 @@ class RabbitMQBroker:
             f"Queue bound to exchange: queue={queue_name}, exchange={exchange_name}, routing_key={routing_key}"
         )
 
-    def consume_configure(self,
+    def configure(self,
                           queue_name: str,
                           exchange_name: str,
                           routing_key: str = None):
